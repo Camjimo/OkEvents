@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExpositorEditDlg" widgetVar="ExpositorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditExpositorTitle}">
+            <h:form id="ExpositorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{expositorController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditExpositorLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" required="true" value="#{expositorController.selected.nombre}" title="#{bundle.EditExpositorTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditExpositorLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{expositorController.selected.apellido}" title="#{bundle.EditExpositorTitle_apellido}" />
+                        <p:outputLabel value="#{bundle.EditExpositorLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{expositorController.selected.telefono}" title="#{bundle.EditExpositorTitle_telefono}" />
+                        <p:outputLabel value="#{bundle.CreateExpositorLabel_correo}" for="correo" />
+                        <p:inputText id="correo" required="true" value="#{expositorController.selected.correo}" title="#{bundle.CreateExpositorTitle_correo}" >
+                            <f:validator validatorId="custom.emailValidator" />
+                        </p:inputText>
+                        <p:outputLabel value="#{bundle.EditExpositorLabel_resenaBibliografica}" for="resenaBibliografica" />
+                        <p:inputTextarea id="resenaBibliografica" value="#{expositorController.selected.resenaBibliografica}" title="#{bundle.EditExpositorTitle_resenaBibliografica}" />
+                        <p:outputLabel value="#{bundle.EditExpositorLabel_institucionOrigen}" for="institucionOrigen" />
+                        <p:inputText id="institucionOrigen" value="#{expositorController.selected.institucionOrigen}" title="#{bundle.EditExpositorTitle_institucionOrigen}" />
+                        <p:outputLabel value="#{bundle.EditExpositorLabel_pais}" for="pais" />
+                        <p:inputText id="pais" value="#{expositorController.selected.pais}" title="#{bundle.EditExpositorTitle_pais}" />
+                        <p:outputLabel value="#{bundle.EditExpositorLabel_grado}" for="grado" />
+                        <p:inputText id="grado" value="#{expositorController.selected.grado}" title="#{bundle.EditExpositorTitle_grado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{expositorController.update}" value="Actualizar" update="display,:ExpositorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ExpositorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ExpositorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

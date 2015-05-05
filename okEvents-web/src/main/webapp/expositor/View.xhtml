@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExpositorViewDlg" widgetVar="ExpositorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewExpositorTitle}">
+            <h:form id="ExpositorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{expositorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewExpositorLabel_nombre}"/>
+                        <h:outputText value="#{expositorController.selected.nombre}" title="#{bundle.ViewExpositorTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewExpositorLabel_apellido}"/>
+                        <h:outputText value="#{expositorController.selected.apellido}" title="#{bundle.ViewExpositorTitle_apellido}"/>
+                        <h:outputText value="#{bundle.ViewExpositorLabel_telefono}"/>
+                        <h:outputText value="#{expositorController.selected.telefono}" title="#{bundle.ViewExpositorTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewExpositorLabel_correo}"/>
+                        <h:outputText value="#{expositorController.selected.correo}" title="#{bundle.ViewExpositorTitle_correo}"/>
+                        <h:outputText value="#{bundle.ViewExpositorLabel_resenaBibliografica}"/>
+                        <h:outputText value="#{expositorController.selected.resenaBibliografica}" title="#{bundle.ViewExpositorTitle_resenaBibliografica}"/>
+                        <h:outputText value="#{bundle.ViewExpositorLabel_institucionOrigen}"/>
+                        <h:outputText value="#{expositorController.selected.institucionOrigen}" title="#{bundle.ViewExpositorTitle_institucionOrigen}"/>
+                        <h:outputText value="#{bundle.ViewExpositorLabel_pais}"/>
+                        <h:outputText value="#{expositorController.selected.pais}" title="#{bundle.ViewExpositorTitle_pais}"/>
+                        <h:outputText value="#{bundle.ViewExpositorLabel_grado}"/>
+                        <h:outputText value="#{expositorController.selected.grado}" title="#{bundle.ViewExpositorTitle_grado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ExpositorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

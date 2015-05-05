@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EventoViewDlg" widgetVar="EventoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEventoTitle}">
+            <h:form id="EventoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="6" rendered="#{eventoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEventoLabel_titulo}"/>
+                        <h:outputText value="#{eventoController.selected.titulo}" title="#{bundle.ViewEventoTitle_titulo}"/>
+                        
+                        <h:outputText value="#{bundle.ViewEventoLabel_unidadAcademicaMayor}"/>
+                        <h:outputText value="#{eventoController.selected.unidadAcademicaMayor}" title="#{bundle.ViewEventoTitle_unidadAcademicaMayor}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_unidadAcademicaMenor}"/>
+                        <h:outputText value="#{eventoController.selected.unidadAcademicaMenor}" title="#{bundle.ViewEventoTitle_unidadAcademicaMenor}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_lugar}"/>
+                        <h:outputText value="#{eventoController.selected.lugar}" title="#{bundle.ViewEventoTitle_lugar}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_fechaHora}"/>
+                        <h:outputText value="#{eventoController.selected.fechaHora}" title="#{bundle.ViewEventoTitle_fechaHora}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEventoLabel_institucionOrigen}"/>
+                        <h:outputText value="#{eventoController.selected.institucionOrigen}" title="#{bundle.ViewEventoTitle_institucionOrigen}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_proyectoVinculado}"/>
+                        <h:outputText value="#{eventoController.selected.proyectoVinculado}" title="#{bundle.ViewEventoTitle_proyectoVinculado}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_publicoObjetivo}"/>
+                        <h:outputText value="#{eventoController.selected.publicoObjetivo}" title="#{bundle.ViewEventoTitle_publicoObjetivo}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_numAsistentes}"/>
+                        <h:outputText value="#{eventoController.selected.numAsistentes}" title="#{bundle.ViewEventoTitle_numAsistentes}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_region}"/>
+                        <h:outputText value="#{eventoController.selected.region}" title="#{bundle.ViewEventoTitle_region}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_comuna}"/>
+                        <h:outputText value="#{eventoController.selected.comuna}" title="#{bundle.ViewEventoTitle_comuna}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_financiamiento}"/>
+                        <h:outputText value="#{eventoController.selected.financiamiento}" title="#{bundle.ViewEventoTitle_financiamiento}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_codigo}"/>
+                        <h:outputText value="#{eventoController.selected.codigo}" title="#{bundle.ViewEventoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_nombreProyecto}"/>
+                        <h:outputText value="#{eventoController.selected.nombreProyecto}" title="#{bundle.ViewEventoTitle_nombreProyecto}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_entidadReceptora}"/>
+                        <h:outputText value="#{eventoController.selected.entidadReceptora}" title="#{bundle.ViewEventoTitle_entidadReceptora}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_idExpositor}"/>
+                        <h:outputText value="#{eventoController.selected.idExpositor.nombre} #{eventoController.selected.idExpositor.apellido}" title="#{bundle.ViewEventoTitle_idExpositor}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_estado}"/>
+                        <h:outputText value="#{eventoController.selected.estado}" title="#{bundle.ViewEventoTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_idSubTipo}"/>
+                        <h:outputText value="#{eventoController.selected.idSubTipo}" title="#{bundle.ViewEventoTitle_idSubTipo}"/>
+                        <h:outputText value="#{bundle.ViewEventoLabel_resumen}"/>
+                        <h:outputText value="#{eventoController.selected.resumen}" title="#{bundle.ViewEventoTitle_resumen}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EventoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

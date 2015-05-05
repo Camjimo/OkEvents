@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EventoCreateDlg" widgetVar="EventoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEventoTitle}">
+            <h:form id="EventoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="6" rendered="#{eventoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{eventoController.selected.titulo}" required="true" title="#{bundle.CreateEventoTitle_titulo}" />
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_unidadAcademicaMayor}" for="unidadAcademicaMayor" />
+                        <p:inputText id="unidadAcademicaMayor" value="#{eventoController.selected.unidadAcademicaMayor}" title="#{bundle.CreateEventoTitle_unidadAcademicaMayor}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_unidadAcademicaMenor}" for="unidadAcademicaMenor" />
+                        <p:inputText id="unidadAcademicaMenor" value="#{eventoController.selected.unidadAcademicaMenor}" title="#{bundle.CreateEventoTitle_unidadAcademicaMenor}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_lugar}" for="lugar" />
+                        <p:inputText id="lugar" value="#{eventoController.selected.lugar}" title="#{bundle.CreateEventoTitle_lugar}" />
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_fechaHora}" for="fechaHora" />
+                        <p:calendar id="fechaHora" pattern="dd/MM/yyyy HH:mm" locale = "es_ES" value="#{eventoController.selected.fechaHora}" title="#{bundle.CreateEventoTitle_fechaHora}" showOn="button"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_institucionOrigen}" for="institucionOrigen" />
+                        <p:inputText id="institucionOrigen" value="#{eventoController.selected.institucionOrigen}" title="#{bundle.CreateEventoTitle_institucionOrigen}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_proyectoVinculado}" for="proyectoVinculado" />
+                        <p:inputText id="proyectoVinculado" value="#{eventoController.selected.proyectoVinculado}" title="#{bundle.CreateEventoTitle_proyectoVinculado}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_publicoObjetivo}" for="publicoObjetivo" />
+                        <p:inputText id="publicoObjetivo" value="#{eventoController.selected.publicoObjetivo}" title="#{bundle.CreateEventoTitle_publicoObjetivo}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_numAsistentes}" for="numAsistentes" />
+                        <p:inputText id="numAsistentes" value="#{eventoController.selected.numAsistentes}" title="#{bundle.CreateEventoTitle_numAsistentes}" />
+
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_region}" for="region" />
+
+                        <p:selectOneMenu id="region" value="#{eventoController.selected.region}">
+                            <f:selectItem itemLabel="Region Metropolitana" itemValue="Region Metropolitana" />
+                            <f:selectItem itemLabel="I Region" itemValue="I Region" />
+                            <f:selectItem itemLabel="II Region" itemValue="II Region" />
+                            <f:selectItem itemLabel="III Region" itemValue="III Region" />
+                            <f:selectItem itemLabel="IV Region" itemValue="IV Region" />
+                            <f:selectItem itemLabel="V Region" itemValue="V Region" />
+                            <f:selectItem itemLabel="VI Region" itemValue="VI Region" />
+                            <f:selectItem itemLabel="VII Region" itemValue="VII Region" />
+                            <f:selectItem itemLabel="VIII Region" itemValue="VIII Region" />
+                            <f:selectItem itemLabel="IX Region" itemValue="IX Region" />
+                            <f:selectItem itemLabel="X Region" itemValue="X Region" />
+                            <f:selectItem itemLabel="XI Region" itemValue="XI Region" />
+                            <f:selectItem itemLabel="XII Region" itemValue="XII Region" />
+                            <f:selectItem itemLabel="XIII Region" itemValue="XIII Region" />
+                            <f:selectItem itemLabel="XIV Region" itemValue="XIV Region" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_comuna}" for="comuna" />
+                        <p:inputText id="comuna" value="#{eventoController.selected.comuna}" title="#{bundle.CreateEventoTitle_comuna}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_financiamiento}" for="financiamiento" />
+                        <p:inputText id="financiamiento" value="#{eventoController.selected.financiamiento}" title="#{bundle.CreateEventoTitle_financiamiento}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{eventoController.selected.codigo}" title="#{bundle.CreateEventoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_nombreProyecto}" for="nombreProyecto" />
+                        <p:inputText id="nombreProyecto" value="#{eventoController.selected.nombreProyecto}" title="#{bundle.CreateEventoTitle_nombreProyecto}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_entidadReceptora}" for="entidadReceptora" />
+                        <p:inputText id="entidadReceptora" value="#{eventoController.selected.entidadReceptora}" title="#{bundle.CreateEventoTitle_entidadReceptora}" />
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_idExpositor}" for="idExpositor" />
+                        <p:selectOneMenu id="idExpositor" value="#{eventoController.selected.idExpositor}" >
+                            <f:selectItems value="#{expositorController.itemsAvailableSelectOne}"
+                                           var="idExpositorItem"
+                                           itemValue="#{idExpositorItem}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_estado}" for="estado" />
+
+                        <p:selectOneListbox id="estado" value="#{eventoController.selected.estado}">
+                            <f:selectItem itemLabel="Propuesto" itemValue="Propuesto" />
+                            <f:selectItem itemLabel="Difundido" itemValue="Difundido" />
+                            <f:selectItem itemLabel="Realizado" itemValue="Realizado" />
+                            <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+                        </p:selectOneListbox>
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_resumen}" for="resumen" />
+                        <p:inputTextarea id="resumen" value="#{eventoController.selected.resumen}" title="#{bundle.CreateEventoTitle_resumen}" />
+
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_idSubTipo}" for="idSubTipo" />
+                        <p:selectOneMenu id="idSubTipo" value="#{eventoController.selected.idSubTipo}" >
+                            <f:selectItems value="#{subTipoController.itemsAvailableSelectOne}"
+                                           var="idSubTipoItem"
+                                           itemValue="#{idSubTipoItem}"/>
+                        </p:selectOneMenu>
+                        
+ <!--<p:inputText id="estado" value="#{eventoController.selected.estado}" title="#{bundle.CreateEventoTitle_estado}" />-->
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{eventoController.create}" value="Crear" update="display,:EventoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EventoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EventoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

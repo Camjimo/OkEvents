@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EventoEditDlg" widgetVar="EventoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEventoTitle}">
+            <h:form id="EventoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="6" rendered="#{eventoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEventoLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{eventoController.selected.titulo}" required="true" title="#{bundle.EditEventoTitle_titulo}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_unidadAcademicaMayor}" for="unidadAcademicaMayor" />
+                        <p:inputText id="unidadAcademicaMayor" value="#{eventoController.selected.unidadAcademicaMayor}" title="#{bundle.EditEventoTitle_unidadAcademicaMayor}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_unidadAcademicaMenor}" for="unidadAcademicaMenor" />
+                        <p:inputText id="unidadAcademicaMenor" value="#{eventoController.selected.unidadAcademicaMenor}" title="#{bundle.EditEventoTitle_unidadAcademicaMenor}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_lugar}" for="lugar" />
+                        <p:inputText id="lugar" value="#{eventoController.selected.lugar}" title="#{bundle.EditEventoTitle_lugar}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_fechaHora}" for="fechaHora" />
+                        <p:calendar id="fechaHora" pattern="MM/dd/yyyy HH:mm" value="#{eventoController.selected.fechaHora}" title="#{bundle.EditEventoTitle_fechaHora}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEventoLabel_institucionOrigen}" for="institucionOrigen" />
+                        <p:inputText id="institucionOrigen" value="#{eventoController.selected.institucionOrigen}" title="#{bundle.EditEventoTitle_institucionOrigen}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_proyectoVinculado}" for="proyectoVinculado" />
+                        <p:inputText id="proyectoVinculado" value="#{eventoController.selected.proyectoVinculado}" title="#{bundle.EditEventoTitle_proyectoVinculado}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_publicoObjetivo}" for="publicoObjetivo" />
+                        <p:inputText id="publicoObjetivo" value="#{eventoController.selected.publicoObjetivo}" title="#{bundle.EditEventoTitle_publicoObjetivo}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_numAsistentes}" for="numAsistentes" />
+                        <p:inputText id="numAsistentes" value="#{eventoController.selected.numAsistentes}" title="#{bundle.EditEventoTitle_numAsistentes}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_region}" for="region" />
+                        <p:inputText id="region" value="#{eventoController.selected.region}" title="#{bundle.EditEventoTitle_region}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_comuna}" for="comuna" />
+                        <p:inputText id="comuna" value="#{eventoController.selected.comuna}" title="#{bundle.EditEventoTitle_comuna}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_financiamiento}" for="financiamiento" />
+                        <p:inputText id="financiamiento" value="#{eventoController.selected.financiamiento}" title="#{bundle.EditEventoTitle_financiamiento}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{eventoController.selected.codigo}" title="#{bundle.EditEventoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_nombreProyecto}" for="nombreProyecto" />
+                        <p:inputText id="nombreProyecto" value="#{eventoController.selected.nombreProyecto}" title="#{bundle.EditEventoTitle_nombreProyecto}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_entidadReceptora}" for="entidadReceptora" />
+                        <p:inputText id="entidadReceptora" value="#{eventoController.selected.entidadReceptora}" title="#{bundle.EditEventoTitle_entidadReceptora}" />
+                        <p:outputLabel value="#{bundle.EditEventoLabel_idExpositor}" for="idExpositor" />
+                        <p:selectOneMenu id="idExpositor" value="#{eventoController.selected.idExpositor}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{expositorController.itemsAvailableSelectOne}"
+                                           var="idExpositorItem"
+                                           itemValue="#{idExpositorItem}"/>
+                        </p:selectOneMenu>
+                        
+                        
+                        <p:outputLabel value="#{bundle.EditEventoLabel_estado}" for="estado" />
+                        <p:selectOneListbox id="estado" value="#{eventoController.selected.estado}">
+                            <f:selectItem itemLabel="Propuesto" itemValue="Propuesto" />
+                            <f:selectItem itemLabel="Difundido" itemValue="Difundido" />
+                            <f:selectItem itemLabel="Realizado" itemValue="Realizado" />
+                            <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+                        </p:selectOneListbox>
+                        
+                        <p:outputLabel value="#{bundle.EditEventoLabel_resumen}" for="resumen" />
+                        <p:inputTextarea id="resumen" value="#{eventoController.selected.resumen}" title="#{bundle.EditEventoTitle_resumen}" />
+                        
+                        <p:outputLabel value="#{bundle.EditEventoLabel_idSubTipo}" for="idSubTipo" />
+                        <p:selectOneMenu id="idSubTipo" value="#{eventoController.selected.idSubTipo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{subTipoController.itemsAvailableSelectOne}"
+                                           var="idSubTipoItem"
+                                           itemValue="#{idSubTipoItem}"/>
+                        </p:selectOneMenu>
+                        <!--<p:inputText id="estado" value="#{eventoController.selected.estado}" title="#{bundle.EditEventoTitle_estado}" />-->
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{eventoController.update}" value="Actualizar" update="display,:EventoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EventoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EventoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

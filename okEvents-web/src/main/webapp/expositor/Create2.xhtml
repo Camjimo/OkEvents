@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EventoCreateDlg" widgetVar="EventoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Solicitar Evento">
+            <h:form id="EventoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{eventoController.selected != null}">
+                        
+                       <p:outputLabel value="#{bundle.CreateEventoLabel_idExpositor}" for="idExpositor" />
+                       <p:selectOneRadio id="idExpositor" required="true" value="#{eventoController.selected.idExpositor}" >
+                           <f:selectItem itemLabel="#{expositorController.selected.nombre} #{expositorController.selected.apellido}" itemValue="#{expositorController.selected}"/>
+                       </p:selectOneRadio>
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_estado}" for="estado" />
+                        <p:selectOneRadio id="estado" value="#{eventoController.selected.estado}">
+                            <f:selectItem itemLabel="Propuesto" itemValue="Propuesto" />
+                        </p:selectOneRadio>
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{eventoController.selected.titulo}" required="true" title="#{bundle.CreateEventoTitle_titulo}" />
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_lugar}" for="lugar" />
+                        <p:inputText id="lugar" value="#{eventoController.selected.lugar}" title="#{bundle.CreateEventoTitle_lugar}" />
+                        
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_fechaHora}" for="fechaHora" />
+                        <p:calendar id="fechaHora" pattern="dd/MM/yyyy" locale = "es_ES" value="#{eventoController.selected.fechaHora}" title="#{bundle.CreateEventoTitle_fechaHora}" showOn="button"/>
+                        
+                       
+                        <p:outputLabel value="#{bundle.CreateEventoLabel_resumen}" for="resumen" />
+                        <p:inputTextarea id="resumen" value="#{eventoController.selected.resumen}" title="#{bundle.CreateEventoTitle_resumen}" />
+                        
+                      
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{eventoController.create}" value="Solicitar" update="display,:growl" oncomplete="handleSubmit(args,'EventoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EventoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

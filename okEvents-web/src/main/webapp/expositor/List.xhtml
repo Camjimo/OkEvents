@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListExpositorTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="cuerpo">
+            <br/>
+            <h:form id="ExpositorListForm">
+                <p:panel header="#{bundle.ListExpositorTitle}">
+                    <p:dataTable id="datalist" value="#{expositorController.items}" var="item"
+                                 selectionMode="single" selection="#{expositorController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idExpositor}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton createEvButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton createEvButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpositorTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpositorTitle_apellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExpositorTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" actionListener="#{expositorController.prepareCreate}" update=":ExpositorCreateForm" oncomplete="PF('ExpositorCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="Detalles" update=":ExpositorViewForm" oncomplete="PF('ExpositorViewDialog').show()" disabled="#{empty expositorController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ExpositorEditForm" oncomplete="PF('ExpositorEditDialog').show()" disabled="#{empty expositorController.selected}"/>
+                            <p:commandButton id="createEvButton" icon="ui-icon-plus"   value="Solicitar evento" update=":EventoCreateForm" actionListener="#{eventoController.prepareCreate}" oncomplete="PF('EventoCreateDialog').show()"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+            <ui:include src="Create2.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

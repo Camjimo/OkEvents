@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputStylesheet name="css/bootstrap.css" />
+        <h:outputStylesheet name="css/bootstrap.css" />
+        <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="./template2.xhtml">
+            <ui:define name="cuerpo">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <!--<li data-target="#carousel-example-generic" data-slide-to="3"></li>-->
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <!--<div class="item active">
+                            <center><div class="tam"><h:graphicImage name="okEvent2.png" width="200" class="posCen"/></div></center>
+                          <div class="carousel-caption">
+                              <h3>Eventos departamento Ingeniería Informática</h3>
+                          </div>
+                        </div>-->
+                        <div class="item active">
+                            <h:graphicImage value="/resources/charla2.jpg"/>
+                            <div class="carousel-caption">
+                                <h3>OkEvents</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <h:graphicImage value="/resources/charla3.jpg"/>
+                            <div class="carousel-caption">
+                                <h3>OkEvents</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <h:graphicImage value="/resources/charla4.jpg" height="100px"/>
+                            <div class="carousel-caption">
+                                <h3>OkEvents</h3>
+                            </div>
+                        </div>  
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="color:#fff;">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+
+                
+                
+                
+                <!--<br />
+                <h:link outcome="/evento/List" value="Show All Evento Items"/>
+                <br />
+                <h:link outcome="/expositor/List" value="Show All Expositor Items"/>
+                <br />
+                <h:link outcome="/subTipo/List" value="Show All SubTipo Items"/>
+                <br />
+                <h:link outcome="/tipoEvento/List" value="Show All TipoEvento Items"/>
+                <br />
+                <h:link outcome="/inscripcion/List" value="Show All Inscripcion Items"/>-->
+                <br/><br/><br/><br/><br/>
+                
+                
+                <div class="col-lg-3"></div>
+                
+                <div class="col-lg-3">
+                    <h:graphicImage value="/resources/logo1.png" width="300" />
+                </div>
+                
+                <div class="col-lg-3" style="padding-top: 50px;">
+                    <i>Sistema de gestion de eventos del departamento de Ingeniería Informática</i>
+                    
+                </div>
+                <hr/>
+                <hr></hr>
+                <div class="col-lg-3"></div>
+                
+                
+
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+    <h:outputScript name="js/bootstrap.js" />
+
+</html>
+

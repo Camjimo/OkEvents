@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SubTipoCreateDlg" widgetVar="SubTipoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSubTipoTitle}">
+            <h:form id="SubTipoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{subTipoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSubTipoLabel_nombreSubTipo}" for="nombreSubTipo" />
+                        <p:inputText id="nombreSubTipo" required="true" value="#{subTipoController.selected.nombreSubTipo}" title="#{bundle.CreateSubTipoTitle_nombreSubTipo}" />
+                        <p:outputLabel value="#{bundle.CreateSubTipoLabel_idTipoEvento}" for="idTipoEvento" />
+                        <p:selectOneMenu id="idTipoEvento" required="true" value="#{subTipoController.selected.idTipoEvento}" >
+                            <f:selectItems value="#{tipoEventoController.itemsAvailableSelectOne}"
+                                           var="idTipoEventoItem"
+                                           itemValue="#{idTipoEventoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{subTipoController.create}" value="#{bundle.Save}" update="display,:SubTipoListForm:datalist,:growl" oncomplete="handleSubmit(args,'SubTipoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SubTipoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

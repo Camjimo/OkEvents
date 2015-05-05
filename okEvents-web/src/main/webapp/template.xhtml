@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputStylesheet name="css/bootstrap.css" />
+        <h:outputStylesheet name="css/bootstrap.css" />
+        <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+    </h:head>
+
+    <h:body>
+        
+        <p:growl id="growl" life="5000" />
+
+        <p:layout fullPage="true">
+        <!--    <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">-->
+                <h:form id="menuForm">
+                    <nav class="navbar navbar-inverse navbar-fixed-top ">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                                                   
+
+                        <h:link outcome="/index" >   
+                          <h:graphicImage value="/resources/logo1.png" width="60" style="margin-top: 10px; padding-top: auto" />
+                        </h:link>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                          <ul class="nav navbar-nav">
+                            <li class="active"><h:link value="Home" outcome="/index" /></li>
+                            
+                                                        
+                            
+                          </ul>
+                            <ul class="nav navbar-nav navbar-right">        
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administrar<span class="caret"></span></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><h:link outcome="/expositor/List" >Expositor</h:link></li>
+                                    <li><h:link outcome="/evento/List" >Formulario de evento</h:link></li>
+                                    <li><h:link outcome="/tipoEvento/List" >Tipos de eventos</h:link></li>
+                                    <li><h:link outcome="/subTipo/List" >SubTipos de eventos</h:link></li>
+                                    <li><h:link outcome="/inscripcion/List" >Lista de Inscritos</h:link></li>
+                                  </ul>
+                                </li>
+                            </ul>  
+                        </div><!-- /.navbar-collapse -->
+                      </div><!-- /.container-fluid -->
+                    </nav>                    
+                </h:form>
+            <!--</p:layoutUnit>-->
+
+            <p:layoutUnit position="center">
+                    <div class="container fondoContenido" style="min-height: 900px;">
+                        <div class="row">
+                            <div class="col-lg-12" style="border-right: 1px #ccc solid;border-left: 1px #ccc solid;">
+
+                                
+                                <ui:insert name="cuerpo"> </ui:insert>
+
+
+                            </div>   
+                        </div>
+                    </div> 
+    
+                
+                <div class="footer">
+                    <h:link outcome="/index2"><button type="submit" class="btn btn-info" style="margin-left: 40px; float: left; margin-top:20px;">Registro</button></h:link>
+                        <a class="navbar-brand logousach" href="#"><h:graphicImage value="/resources/usach.png" height="60" style="margin-top: 0px; padding-top: 0px; padding-bottom: 0px " /></a>
+
+                        <br/>
+                        <div class="blockquote-reverse">
+                        <p>Sistema de gestión de eventos del departamento de Ingeniería Informática</p>
+                        <footer>DIINF <cite title="Source Title">SimpleApps</cite></footer>
+                        
+                    </div>
+                </div>
+            </p:layoutUnit>
+            
+            
+        </p:layout>
+
+    </h:body>
+    
+    
+    
+<h:outputScript name="js/bootstrap.js" />
+<h:outputScript name="js/language_es.js" />
+
+</html>
